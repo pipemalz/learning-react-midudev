@@ -1,6 +1,6 @@
 .tw-followList {
   background-color: #16181C;
-  width: 350px;
+  width: 370px;
   padding: 15px;
 }
 .tw-followCard {
@@ -12,7 +12,7 @@
 }
 .tw-followCard-header {
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 .tw-followCard-info {
   display: flex;
@@ -21,9 +21,17 @@
   justify-content: center;
 
 }
-.tw-followCard-info span {
+.tw-info-userName {
   opacity: .6;
   font-weight: lighter;
+}
+.tw-info-followsYou {
+  background-color: #26242c;
+  font-size: 14px;
+  padding: 3px;
+  border-radius: 5px;
+  margin-left: 10px;
+
 }
 .tw-followCard-avatar {
   width: 50px;

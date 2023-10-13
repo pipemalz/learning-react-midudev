@@ -5,20 +5,20 @@ const users = [
   {
     username: 'lacimarronaesp',
     name: 'La Cimarrona ESP',
-    following: false,
+    following: true,
     followsYou: false
   },
   {
     username: 'leonardodicaprio',
     name: 'Leonardo DiCaprio',
-    following: false,
+    following: true,
     followsYou: false
   },
   {
     username: 'bradpitt',
     name: 'Brad Pitt',
     following: false,
-    followsYou: false
+    followsYou: true
   },
   {
     username: 'angelinajolie',
@@ -35,14 +35,14 @@ const users = [
   {
     username: 'merylstreep',
     name: 'Meryl Streep',
-    following: false,
+    following: true,
     followsYou: false
   },
   {
     username: 'robertdowneyjr',
     name: 'Robert Downey Jr.',
     following: false,
-    followsYou: false
+    followsYou: true
   },
   {
     username: 'scarlettjohansson',
@@ -60,7 +60,7 @@ const users = [
     username: 'jenniferlawrence',
     name: 'Jennifer Lawrence',
     following: false,
-    followsYou: false
+    followsYou: true
   },
   {
     username: 'mattdamon',
@@ -75,9 +75,15 @@ function App () {
     <section className="tw-followList">
       <h2>A quién seguir</h2>
       {
-        users.map(user => {
+        users.map((user,i) => {
           return (
-            <TwitterFollowCard username={user.username} name={user.name} />
+            <TwitterFollowCard 
+              username={user.username} 
+              name={user.name}
+              followsYou={user.followsYou}
+              following={user.following}
+              key={i}
+            />
           )
         } )
       }

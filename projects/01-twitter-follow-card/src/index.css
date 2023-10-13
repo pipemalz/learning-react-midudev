@@ -8,4 +8,8 @@ body {
   background-color: #000;
   color: white;
   font-family: system-ui;
+  margin: 0 auto;
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
 }
