@@ -1,42 +1,41 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.tw-followList {
+  background-color: #16181C;
+  width: 350px;
+  padding: 15px;
 }
+.tw-followCard {
+  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.tw-followCard-header {
+  display: flex;
+  gap: 20px;
+}
+.tw-followCard-info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.tw-followCard-info span {
+  opacity: .6;
+  font-weight: lighter;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.tw-followCard-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.tw-followCard-followBtn {
+  cursor: pointer;
+  padding: 8px 20px;
+  background-color: white;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
 }

@@ -1,34 +1,87 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import TwitterFollowCard from "./TwitterFollowCard"
+import "./App.css"
 
-function App() {
-  const [count, setCount] = useState(0)
+const users = [
+  {
+    username: 'lacimarronaesp',
+    name: 'La Cimarrona ESP',
+    following: false,
+    followsYou: false
+  },
+  {
+    username: 'leonardodicaprio',
+    name: 'Leonardo DiCaprio',
+    following: false,
+    followsYou: false
+  },
+  {
+    username: 'bradpitt',
+    name: 'Brad Pitt',
+    following: false,
+    followsYou: false
+  },
+  {
+    username: 'angelinajolie',
+    name: 'Angelina Jolie',
+    following: false,
+    followsYou: false
+  },
+  {
+    username: 'tomhanks',
+    name: 'Tom Hanks',
+    following: false,
+    followsYou: false
+  },
+  {
+    username: 'merylstreep',
+    name: 'Meryl Streep',
+    following: false,
+    followsYou: false
+  },
+  {
+    username: 'robertdowneyjr',
+    name: 'Robert Downey Jr.',
+    following: false,
+    followsYou: false
+  },
+  {
+    username: 'scarlettjohansson',
+    name: 'Scarlett Johansson',
+    following: false,
+    followsYou: false
+  },
+  {
+    username: 'bradleycooper',
+    name: 'Bradley Cooper',
+    following: false,
+    followsYou: false
+  },
+  {
+    username: 'jenniferlawrence',
+    name: 'Jennifer Lawrence',
+    following: false,
+    followsYou: false
+  },
+  {
+    username: 'mattdamon',
+    name: 'Matt Damon',
+    following: false,
+    followsYou: false
+  }
+];
 
+function App () {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <section className="tw-followList">
+      <h2>A quién seguir</h2>
+      {
+        users.map(user => {
+          return (
+            <TwitterFollowCard username={user.username} name={user.name} />
+          )
+        } )
+      }
+    </ section>
   )
 }
 
