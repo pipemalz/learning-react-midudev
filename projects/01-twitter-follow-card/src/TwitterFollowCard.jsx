@@ -1,29 +1,39 @@
 import "./App.css"
 
-function TwitterFollowCard ({ username, name, followsYou, following }) {
+function TwitterFollowCard ({ username, name, maxCharName, followsYou, following }) {
 
   const avatarSrc = `https://unavatar.io/twitter/${username}`
 
+  const shortenedName = name => (
+    name.length > maxCharName 
+      ? 
+        name.slice(0, maxCharName) + "..." 
+      : 
+        name
+    )
+
   return (
-    <article className="tw-followCard">
-      <header className="tw-followCard-header">
-        <img className="tw-followCard-avatar"
+    <article className="followCard">
+      <header className="followCard__header">
+        <img className="followCard__avatar"
           src={avatarSrc}
           alt={`Avatar de ${name}`}
         />
-        <div className="tw-followCard-info">
-          <strong>{name}</strong>
-          <span className="tw-info-userName">
+        <div className="followCard__info">
+          <strong 
+            className="followCard__name">{shortenedName(name)}
+          </strong>
+          <span className="followCard__username">
             @{username} 
             { 
-              followsYou && <span className="tw-info-followsYou">Te sigue</span>
+              followsYou && <span className="followCard__followsYou">Te sigue</span>
             } 
           </span>
         </div>
       </header>
 
-      <aside className="tw-followCard-aside">
-          <button className="tw-followCard-followBtn">
+      <aside className="followCard__aside">
+          <button className="followCard__button">
             {
               following ? "Siguiendo" : "Seguir"
             }

@@ -9,62 +9,62 @@ const users = [
     followsYou: false
   },
   {
-    username: 'leonardodicaprio',
-    name: 'Leonardo DiCaprio',
+    username: 'minsaludcol',
+    name: 'Ministerio de Salud',
     following: true,
     followsYou: false
   },
   {
-    username: 'bradpitt',
-    name: 'Brad Pitt',
+    username: 'ministerio_tic',
+    name: 'Ministerio TIC',
     following: false,
     followsYou: true
   },
   {
-    username: 'angelinajolie',
-    name: 'Angelina Jolie',
+    username: 'mineducacion',
+    name: 'Ministerio de Educación',
     following: false,
     followsYou: false
   },
   {
-    username: 'tomhanks',
-    name: 'Tom Hanks',
+    username: 'minhacienda',
+    name: 'Ministerio de Hacienda',
     following: false,
     followsYou: false
   },
   {
-    username: 'merylstreep',
-    name: 'Meryl Streep',
+    username: 'mincienciasco',
+    name: 'Ministerio de Ciencias',
     following: true,
     followsYou: false
   },
   {
-    username: 'robertdowneyjr',
-    name: 'Robert Downey Jr.',
+    username: 'mininterior',
+    name: 'Ministerio del Interior',
     following: false,
     followsYou: true
   },
   {
-    username: 'scarlettjohansson',
-    name: 'Scarlett Johansson',
+    username: 'mindefensa',
+    name: 'Ministerio de Defensa',
     following: false,
     followsYou: false
   },
   {
-    username: 'bradleycooper',
-    name: 'Bradley Cooper',
+    username: 'minambienteco',
+    name: 'Ministerio de Medio Ambiente',
     following: false,
     followsYou: false
   },
   {
-    username: 'jenniferlawrence',
-    name: 'Jennifer Lawrence',
+    username: 'mintransporteco',
+    name: 'Ministerio de Transporte',
     following: false,
     followsYou: true
   },
   {
-    username: 'mattdamon',
-    name: 'Matt Damon',
+    username: 'mincultura',
+    name: 'Ministerio de Cultura',
     following: false,
     followsYou: false
   }
@@ -72,14 +72,15 @@ const users = [
 
 function App () {
   return (
-    <section className="tw-followList">
-      <h2>A quién seguir</h2>
+    <section className="followCards">
+      <h2 className="followCards__title">A quién seguir</h2>
       {
         users.map((user,i) => {
           return (
             <TwitterFollowCard 
               username={user.username} 
               name={user.name}
+              maxCharName={18}
               followsYou={user.followsYou}
               following={user.following}
               key={i}
