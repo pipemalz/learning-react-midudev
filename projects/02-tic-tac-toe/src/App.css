@@ -1,0 +1,27 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game {
+  width: 150px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+.square {
+  display: grid;
+  font-weight: 900;
+  place-content: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.square:hover {
+  border: 2px solid black;
+}
