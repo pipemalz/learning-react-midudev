@@ -6,7 +6,7 @@ function TwitterFollowCard (
   { 
     username,
     name, 
-    maxCharButton,
+    maxCharCardInfo,
     followsYou, 
     initialIsFollowing 
   }
@@ -14,7 +14,7 @@ function TwitterFollowCard (
 
   const [isFollowing, setIsFollowing] = useState(initialIsFollowing)
   
-  const initialMaxCharName = initialIsFollowing ? maxCharButton.name.following : maxCharButton.name.follow
+  const initialMaxCharName = initialIsFollowing ? maxCharCardInfo.name.following : maxCharCardInfo.name.follow
 
   const [maxCharName, setMaxCharName] = useState(initialMaxCharName)
 
@@ -23,15 +23,15 @@ function TwitterFollowCard (
       ? 
         followsYou 
           ? 
-            maxCharButton.username.followedFollowing
+            maxCharCardInfo.username.followedFollowing
           : 
-            maxCharButton.username.following
+            maxCharCardInfo.username.following
       :
         followsYou
           ?
-            maxCharButton.username.followed
+            maxCharCardInfo.username.followed
           :
-            maxCharButton.username.follow
+            maxCharCardInfo.username.follow
 
   const [maxCharUsername, setMaxCharUsername] = useState(initialMaxCharUsername)
 
@@ -60,37 +60,49 @@ function TwitterFollowCard (
     setIsFollowing(newIsFollowing)
     setButtonText(newIsFollowing ? "Siguiendo" : "Seguir")
     setMaxCharName(
-      newIsFollowing ? maxCharButton.name.following : maxCharButton.name.follow
+      newIsFollowing ? maxCharCardInfo.name.following : maxCharCardInfo.name.follow
     )
     setMaxCharUsername(
       newIsFollowing 
         ? 
           followsYou 
             ? 
-              maxCharButton.username.followedFollowing
+              maxCharCardInfo.username.followedFollowing
             : 
-              maxCharButton.username.following
+              maxCharCardInfo.username.following
         :
           followsYou
             ?
-              maxCharButton.username.followed
+              maxCharCardInfo.username.followed
             :
-              maxCharButton.username.follow
+              maxCharCardInfo.username.follow
     )
   }
 
   const setButtonTextOnMouseOver = () => {
     if (!isFollowing) return
     setButtonText("Dejar de Seguir")
-    setMaxCharName(maxCharButton.name.stopFollowing)
-    setMaxCharUsername(maxCharButton.username.followedFollowingStopFollowing)
+    setMaxCharName(maxCharCardInfo.name.stopFollowing)
+    setMaxCharUsername(
+      followsYou
+        ?
+          maxCharCardInfo.username.followedFollowingStopFollowing
+        :
+          maxCharCardInfo.username.stopFollowing
+    )
   }
 
   const setButtonTextOnMouseOut = () => {
     if (!isFollowing) return
     setButtonText("Siguiendo")
-    setMaxCharName(maxCharButton.name.following)
-    setMaxCharUsername(maxCharButton.username.followedFollowing)
+    setMaxCharName(maxCharCardInfo.name.following)
+    setMaxCharUsername(
+      followsYou
+        ?
+          maxCharCardInfo.username.followedFollowing
+        :
+          maxCharCardInfo.username.following
+    )
   }
 
   return (
@@ -105,7 +117,10 @@ function TwitterFollowCard (
             title={name}
             className="followCard__name">{shortenedText(name, maxCharName)}
           </strong>
-          <span className="followCard__username">
+          <span 
+            className="followCard__username"
+            title={username}
+          >
             @{shortenedText(username, maxCharUsername)} 
             { 
               followsYou && <span className="followCard__followsYou">Te sigue</span>

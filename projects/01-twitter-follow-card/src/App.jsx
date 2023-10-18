@@ -72,7 +72,7 @@ const users = [
 
 function App () {
 
-  const maxCharButton = {
+  const maxCharCardInfo = {
     name: {
       following : 18,
       follow : 20,
@@ -81,10 +81,10 @@ function App () {
     username: {
       following : 18,
       follow : 20,
-      stopFollowing : 14,
+      stopFollowing : 10,
       followed: 18,
-      followedFollowing: 10,
-      followedFollowingStopFollowing: 5
+      followedFollowing: 12,
+      followedFollowingStopFollowing: 7
     }
   }
 
@@ -97,8 +97,7 @@ function App () {
             <TwitterFollowCard 
               username={user.username} 
               name={user.name}
-              maxCharButton={maxCharButton}
-              initialMaxCharUsername={18}
+              maxCharCardInfo={maxCharCardInfo}
               followsYou={user.followsYou}
               initialIsFollowing={user.following}
               key={i}
