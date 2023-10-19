@@ -1,8 +1,16 @@
-function Square ({ children, index }) {
+function Square ({ children, index, isSelected, updateBoard }) {
 
+  const squareClassName = isSelected ? 'square square--selected' : 'square'
+
+  const updateBoardOnClick = () => {
+    updateBoard(index)
+  }
 
   return (
-    <div className='square'>
+    <div 
+      className={squareClassName}
+      onClick={updateBoardOnClick}
+    >
       {children}
     </div>
   )
