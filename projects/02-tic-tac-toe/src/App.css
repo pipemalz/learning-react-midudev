@@ -48,3 +48,36 @@
   background-color: black;
   color: white;
 }
+
+.winner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid black;
+  border-bottom-width: 10px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.winnerText {
+  font-size: 24px;
+}
+
+.winnerText span {
+  font-weight: bold;
+}
+
+.restartButton {
+  padding: 15px;
+  background-color: transparent;
+  color: black;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.restartButton:hover {
+  background-color: black;
+  color: white;
+}

@@ -1,18 +1,18 @@
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Square from './Square'
 
 function App() {
 
-  const winningTable = [
-    [1,2,3],
-    [4,5,6],
-    [7,8,9],
+  const COMBOS = [
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
     [1,4,7],
     [2,5,8],
-    [3,6,9],
-    [1,5,9],
-    [3,5,7]
+    [0,4,8],
+    [2,4,6]
   ]
 
   const TURNS = {X:'X', O:'O'}
@@ -21,14 +21,40 @@ function App() {
 
   const [turn, setTurn] = useState(TURNS.X)
 
+  const [winner, setWinner] = useState(null)
+
+  const checkWinner = (boardToCheck) => {
+    for(const combo of COMBOS){
+      const [a, b, c] = combo
+      if ( 
+          boardToCheck[a]
+          && boardToCheck[a] == boardToCheck[b] 
+          && boardToCheck[b] == boardToCheck[c] 
+        ){
+        return boardToCheck[a]
+      }
+    }
+    return null
+  }
+
   const updateBoard = (index) => {
-    if (board[index]) return
+    if (board[index] || winner) return
     const newBoard = structuredClone(board)
     newBoard[index] = turn
     setBoard(newBoard)
 
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
+
+    const newWinner = checkWinner(newBoard)
+
+    if(newWinner) {
+      setWinner(newWinner)
+    }
+
+    if (newBoard.every(position=>position!==null)){
+      setWinner(false)
+    }
   }
 
   return (
@@ -57,6 +83,29 @@ function App() {
         <Square isSelected={turn === TURNS.O} >
           {TURNS.O}
         </Square> 
+      </section>
+
+      <section className={winner !== null ? 'winner' : 'winner--hidden'}>
+        {
+          winner !== null && (
+            <>
+              {
+                winner 
+                ? (<p className='winnerText'>El ganador es <span>{winner}</span></p>)
+                : (<p className='winnerText'>Empate</p>)
+              }
+              <button 
+                className='restartButton'
+                onClick={()=>{
+                  setBoard(new Array(9).fill(null))
+                  setWinner(null)
+                }}
+              >
+                Empezar de nuevo
+              </button>
+            </>
+          )
+        }
       </section>
     </main>
   )
