@@ -1,0 +1,9 @@
+.square {
+  font-size: 32px;
+  display: grid;
+  font-weight: 900;
+  place-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}

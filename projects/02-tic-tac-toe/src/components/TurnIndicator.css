@@ -1,0 +1,13 @@
+.turn {
+  display: flex;
+  flex-direction: row;
+}
+
+.turn .square {
+  transition: .25s ease-in-out background-color;
+}
+
+.turn .square--selected {
+  background-color: black;
+  color: white;
+}

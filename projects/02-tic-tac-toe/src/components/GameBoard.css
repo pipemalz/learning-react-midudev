@@ -1,0 +1,15 @@
+.game {
+  width: 150px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+.game .square {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.game .square:hover {
+  border: 2px solid black;
+}
