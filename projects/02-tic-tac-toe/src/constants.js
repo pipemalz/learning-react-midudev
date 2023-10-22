@@ -13,3 +13,5 @@ export const TURNS = {
   X: '✖',
   O: '●'
 }
+
+export const EMPTY_BOARD = new Array(9).fill(null)

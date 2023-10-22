@@ -1,7 +1,7 @@
 import './Square.css'
 import { useState } from 'react'
 
-function Square ({ children, index, turn, isSelected, updateBoard }) {
+function Square ({ children, index, turn, winner, isSelected, updateBoard }) {
 
   const [currentTurn, setCurrentTurn] = useState(null)
 
@@ -17,7 +17,7 @@ function Square ({ children, index, turn, isSelected, updateBoard }) {
   }
 
   const showTurnOnMouseOver = () => {
-    if (children) return
+    if (children || winner) return
     setCurrentTurn(turn)
   }
 

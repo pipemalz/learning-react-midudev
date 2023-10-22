@@ -1,7 +1,7 @@
 import './GameBoard.css'
 import Square from './Square'
 
-export function GameBoard ({ board, updateBoard, turn }) {
+export function GameBoard ({ board, updateBoard, turn, winner }) {
   return (
     <section className='game'>
       {
@@ -12,6 +12,7 @@ export function GameBoard ({ board, updateBoard, turn }) {
               index={index}
               updateBoard={updateBoard}
               turn={turn}
+              winner={winner}
             >
               {position}
             </Square>

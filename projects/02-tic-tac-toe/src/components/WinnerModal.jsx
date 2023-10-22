@@ -12,7 +12,7 @@ export function WinnerModal ({ winner, resetGame }) {
   return (
     <section className='winner'>
       {content}
-      <RestartButton resetGame={resetGame} />
+      <RestartButton resetGame={resetGame}>Empezar de nuevo</RestartButton>
     </section>
   )
 }
