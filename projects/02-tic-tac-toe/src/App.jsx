@@ -15,8 +15,7 @@ import { RestartButton } from './components/RestartButton'
 import { TurnIndicator } from './components/TurnIndicator'
 import { GameBoard } from './components/GameBoard'
 
-function App() {
-
+function App () {
   const [board, setBoard] = useState(() => {
     return JSON.parse(localStorage.getItem('board')) ?? EMPTY_BOARD
   })
@@ -27,9 +26,9 @@ function App() {
 
   const [winner, setWinner] = useState(() => {
     const currentWinner = checkWinnerFrom(board)
-    if(currentWinner !== null) {
+    if (currentWinner !== null) {
       return currentWinner
-    } else if (checkEndGameFrom(board)){
+    } else if (checkEndGameFrom(board)) {
       return false
     } else {
       return null
@@ -37,10 +36,9 @@ function App() {
   })
 
   const updateBoard = (index) => {
-    
-    //Verificar si ya hay un turno en la posicion de la board o si ya existe un ganador, para detener el juego.
-    if (board[index] || winner) return 
-    
+    // Verificar si ya hay un turno en la posicion de la board o si ya existe un ganador, para detener el juego.
+    if (board[index] || winner) return
+
     const newBoard = structuredClone(board)
     newBoard[index] = turn
     setBoard(newBoard)
@@ -55,10 +53,10 @@ function App() {
 
     const newWinner = checkWinnerFrom(newBoard)
 
-    if(newWinner) {
+    if (newWinner) {
       confetti()
       setWinner(newWinner)
-    }else if (checkEndGameFrom(newBoard)){
+    } else if (checkEndGameFrom(newBoard)) {
       setWinner(false)
     }
   }
@@ -76,7 +74,7 @@ function App() {
       <RestartButton resetGame={resetGame}>Resetear juego</RestartButton>
       <GameBoard board={board} updateBoard={updateBoard} turn={turn} winner={winner} />
       <TurnIndicator turn={turn} />
-      <WinnerModal winner={winner} resetGame={resetGame}/>
+      <WinnerModal winner={winner} resetGame={resetGame} />
     </main>
   )
 }

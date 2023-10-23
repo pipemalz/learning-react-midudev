@@ -2,13 +2,12 @@ import './Square.css'
 import { useState } from 'react'
 
 function Square ({ children, index, turn, winner, isSelected, updateBoard }) {
-
   const [currentTurn, setCurrentTurn] = useState(null)
 
   const squareClassName = isSelected ? 'square square--selected' : 'square'
 
   const content = currentTurn
-    ? <span style={{opacity: ".3"}}>{currentTurn}</span>
+    ? <span style={{ opacity: '.3s' }}>{currentTurn}</span>
     : children
 
   const updateBoardOnClick = () => {
@@ -26,7 +25,7 @@ function Square ({ children, index, turn, winner, isSelected, updateBoard }) {
   }
 
   return (
-    <div 
+    <div
       className={squareClassName}
       onClick={updateBoardOnClick}
       onMouseOver={showTurnOnMouseOver}

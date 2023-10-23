@@ -2,7 +2,7 @@ import './RestartButton.css'
 
 export function RestartButton ({ children, resetGame }) {
   return (
-    <button 
+    <button
       className='restartButton'
       onClick={resetGame}
     >

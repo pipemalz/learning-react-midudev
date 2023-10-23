@@ -7,8 +7,8 @@ export function GameBoard ({ board, updateBoard, turn, winner }) {
       {
         board.map((position, index) => {
           return (
-            <Square 
-              key={index} 
+            <Square
+              key={index}
               index={index}
               updateBoard={updateBoard}
               turn={turn}
