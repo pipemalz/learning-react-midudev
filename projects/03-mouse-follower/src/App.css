@@ -1,0 +1,32 @@
+.container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+.circle {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 1px solid white;
+  border-radius: 50%;
+  pointer-events: none;
+  background-color: rgba(0,0,0,0.25);
+}
+
+.button {
+  padding: 10px 5px;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 12px;
+  background-color: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #999;
+}
