@@ -8,6 +8,8 @@ export function App () {
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
   // Hooks de efectos (useEffect)
+
+  // Efecto para suscripción de evento al mover el mouse y modificar estado position
   useEffect(() => {
     const handlePointerMove = e => {
       const { clientX, clientY } = e
@@ -17,6 +19,8 @@ export function App () {
     if (enabled) {
       // Suscripción a eventos dentro del useEffect
       window.addEventListener('pointermove', handlePointerMove)
+    } else {
+      setPosition({ x: 0, y: 0 })
     }
 
     // Cleanup -> se ejecuta cuando
@@ -25,28 +29,29 @@ export function App () {
     return () => {
       // Limpiar eventos suscritos
       window.removeEventListener('pointermove', handlePointerMove)
-      setPosition({ x: 0, y: 0 })
     }
     // Dependencias como segundo parametro, array [dep1,dep2,...]
   }, [enabled])
 
   // Handlers de eventos del componente
-  const setEnabledOnClick = () => {
+  const toggleEnabled = () => {
     setEnabled(!enabled)
   }
 
+  const cursorStyle = cursorType => ({ cursor: enabled ? 'none' : cursorType })
+
   return (
-    <main className='container'>
+    <main className='container' style={cursorStyle('auto')}>
       <div
         className='circle'
         style={{
           top: '-25px',
           left: '-25px',
+          // Posicion del circulo "mouse follower" a partir del estado position
           transform: `translate(${position.x}px, ${position.y}px)`
         }}
       />
-      <h1>La Cimarrona E.S.P</h1>
-      <button className='button' onClick={setEnabledOnClick}>
+      <button className='button' onClick={toggleEnabled} style={cursorStyle('pointer')}>
         {enabled ? 'Desactivar' : 'Activar'}
       </button>
     </main>
