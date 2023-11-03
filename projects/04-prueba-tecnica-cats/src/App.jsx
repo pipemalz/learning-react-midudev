@@ -1,47 +1,37 @@
+import './App.css'
 import { useEffect, useState } from 'react'
 
 export function App () {
   const FACT_ENDPOINT = 'https://catfact.ninja/fact'
   const IMAGE_ENDPOINT = fact => `https://cataas.com/cat/says/${fact}?fontColor=white`
 
-  const [fact, setFact] = useState('')
-  const [image, setImage] = useState({})
+  const [fact, setFact] = useState({})
+  const [imageUrl, setImageUrl] = useState('')
 
-  async function getFact (url) {
-    try {
-      const res = await fetch(url)
-      const data = await res.json()
-      const fact = await data.fact
-      return fact
-    } catch (error) {
-      throw new Error(error)
-    }
-  }
-
-  // async function getImage (url) {
-  //   const res = await fetch(url)
-  //   const data = await res.json()
-  //   const image = await data
-  //   return (image)
-  // }
-
-  function getFisrstWordFromString (string) {
-    return string.split(' ')[0]
+  function getWordsFromString (string, wordQty = 1) {
+    return string.split(' ', wordQty)
   }
 
   useEffect(() => {
-    getFact(FACT_ENDPOINT).then(fact => setFact(getFisrstWordFromString(fact)))
+    fetch(FACT_ENDPOINT)
+      .then(res => res.json())
+      .then(data => {
+        const { fact } = data
+        setFact({
+          fact,
+          shortenedFact: getWordsFromString(fact)
+        })
+      })
   }, [])
 
-  useEffect(() => {
-    // getImage(IMAGE_ENDPOINT).then(image => setImage(image))
-    setImage(IMAGE_ENDPOINT(fact))
-  }, [fact])
-
   return (
-    <>
-      {fact && <h1>{fact}</h1>}
-      <img src={image} />
-    </>
+    <main>
+      <h1>Cats Facts App</h1>
+      {fact.fact && <p>{fact.fact}</p>}
+      <img
+        src={IMAGE_ENDPOINT(fact.shortenedFact)}
+        alt={`Image of a cat wit the text ${fact.shortenedFact}`}
+      />
+    </main>
   )
 }
