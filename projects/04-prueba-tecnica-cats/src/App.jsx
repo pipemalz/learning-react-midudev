@@ -22,3 +22,5 @@ export function App () {
     </main>
   )
 }
+
+// Tests: npm init playwright@latest
